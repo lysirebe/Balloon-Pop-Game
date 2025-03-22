@@ -4,14 +4,14 @@ import os
 import pygame
 
 # Add the src directory to the Python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 
 from game import Game
 
 # Initialize pygame for testing
 pygame.init()
 
-def test_game_initialization():
+def test_game_initialisation():
     """Test if the game is initialized with the correct properties."""
     game = Game(800, 600)
     
@@ -44,3 +44,4 @@ def test_win_condition():
     game.score = 10
     
     assert game.check_win() == True
+

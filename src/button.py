@@ -11,8 +11,10 @@ class Button:
     
     def is_clicked(self, mouse_x, mouse_y):
         """Check if the button is clicked."""
-        return (self.x <= mouse_x <= self.x + self.width and 
+        result = (self.x <= mouse_x <= self.x + self.width and
                 self.y <= mouse_y <= self.y + self.height)
+        print(f"is_clicked check: mouse_pos=({mouse_x}, {mouse_y}), button=({self.x},{self.y},{self.width},{self.height}), result={result}")
+        return result
                 
     def draw(self, screen, font):
         """Draw the button on the screen."""

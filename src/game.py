@@ -37,6 +37,28 @@ class Game:
         """Check if the player has lost."""
         return self.missed_balloons >= self.max_missed
     
+    def update(self):
+        """Update the game state and balloon positions"""
+        if self.state == "menu":
+            # Do nothing in the menu state
+            return
+
+        if self.state == "play":
+            # Update balloon positions
+            remaining_balloons = []
+            for balloon in self.balloons:
+                balloon.y -= balloon.speed  # Move balloon upward
+                if balloon.y >= 0:  # Keep balloons that are still on-screen
+                    remaining_balloons.append(balloon)
+            self.balloons = remaining_balloons
+
+            # Check if the player has won
+            if self.score >= self.target_score:
+                self.state = "win"
+
+        elif self.state == "win":
+            # Do nothing in the win state
+            return
     def spawn_balloon(self):
         """Spawn a new balloon at a random position."""
         x = random.randint(50, self.width - 50)
